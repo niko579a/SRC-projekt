@@ -9,6 +9,7 @@ class Map{
   color R; //data til farven rød
   color G; //data til farven grøn
   color B; //data til farven blå
+  int selectedChild = -1;
   
   //Konstruktør
   Map(String svgFile, float scaleAmount, color R_, color G_, color B_){
@@ -35,10 +36,40 @@ class Map{
     map.endDraw();
   }
   
-  //Denne funktion 
-  void childSelect(){ 
-    color childColor = int(red(map.get(mouseX, mouseY)));
-    int selectedChild = childColor - R;
-    println(selectedChild);
+  boolean isChildSelected(){
+    if(selectedChild > -1){
+      return true;
+    } else{
+      return false;
+    }
   }
+  
+  //Denne funktion finder ud af hvilken "farve" hver stat har, hvilket svarer til statens id. 
+  void childSelect(){ 
+    if(isChildSelected() == false){
+     color childColor = int(red(map.get(mouseX, mouseY)));
+     selectedChild = childColor - R;
+    }
+  }
+  
+  void unselectChild(){
+    selectedChild = -1;
+  }
+  
+  MapChild getSelectedChild(){
+    if(isChildSelected() == true){
+     return allMapChildren.get(selectedChild);
+    } else{
+      return new MapChild();
+    }
+  }
+  
+  /*void drawSelectedChild(){
+    try{
+      MapChild child = allMapChildren.get(selectedChild);
+      child.diaplay();
+    } catch(ArrayIndexOutOfBoundsException error){
+    }
+  }
+  */
 }
