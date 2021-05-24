@@ -9,8 +9,7 @@ class LoadData{
     int rowIndex = -1; 
     for(int i = dataTable.getRowCount() - 1; i >= 0; i--){
       TableRow row = dataTable.getRow(i);
-      println(value);
-      if(row.getString(column) == value){
+      if(row.getString(column).equals(value)){
         rowIndex = i;
         break;
       }
@@ -18,12 +17,12 @@ class LoadData{
     if(rowIndex > -1){
       return dataTable.getRow(rowIndex);
     } else{
-      Table errorTable = new Table();
-      errorTable.addColumn("error");
-      TableRow errorRow = errorTable.addRow(); 
-      errorRow.setString("error", "No Result");
-      TableRow returnRow = errorTable.getRow(0);  
-      return returnRow;
+      RowError error = new RowError();
+      return error.createError();
     }
+  }
+  
+  TableRow getLastStringData(){
+    return dataTable.getRow(dataTable.getRowCount() - 1);
   }
 }
