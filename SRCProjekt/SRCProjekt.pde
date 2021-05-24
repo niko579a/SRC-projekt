@@ -1,4 +1,4 @@
-Table usStatesData;
+LoadData usStatesData;
 PShape usMap;
 Map newUsMap;
 Button backButton;
@@ -6,7 +6,7 @@ Button backButton;
 void setup(){
   background(255);
   size(1200,700);
-  usStatesData = loadTable("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv", "header");
+  usStatesData = new LoadData("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv");
   usMap = loadShape("us.svg");
   smooth(8);
   //pixelDensity(2);
@@ -25,6 +25,9 @@ void draw(){
     backButton.display();
     fill(0);
     text(newUsMap.getSelectedChild().name, 200, 50);
+    TableRow stateData = usStatesData.getSingleStringDataFromEnd("state", newUsMap.getSelectedChild().name);
+    println(stateData.getColumnTitles());
+    text(stateData.getString("state"), 200, 100);
     //newUsMap.drawSelectedChild();
   } else{
     shape(usMap);

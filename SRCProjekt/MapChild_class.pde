@@ -12,6 +12,7 @@ class MapChild{
   }
   
   MapChild(){
+    name = "error";
   }
   
   void diaplay(){
