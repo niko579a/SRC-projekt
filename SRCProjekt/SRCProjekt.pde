@@ -11,10 +11,10 @@ void setup(){
   usData = new LoadData("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv");
   usMap = loadShape("us.svg");
   smooth(8);
-  //pixelDensity(2);
+  pixelDensity(2);
   usMap.scale(0.85);
   newUsMap = new Map("us.svg",  0.85 , 124, 165, 196);
-  backButton = new Button(100, 50, 150, 40, "Back", 0, 255, 20); //ret farven på knappen senere!!!!!!!!
+  backButton = new Button(100, 50, 150, 40, "Back", color(0, 32, 96), color(109, 177, 236), 20); 
 }
 
 void draw(){
@@ -28,9 +28,9 @@ void draw(){
     fill(0);
     text("You have choosen: " + newUsMap.getSelectedChild().name, 200, 50);
     TableRow stateData = usStatesData.getSingleStringDataFromEnd("state", newUsMap.getSelectedChild().name);
-    text("The date: " + stateData.getString("date"), (width - 260), 50);
-    text("The fips number for the state: " + stateData.getString("fips"), 100, 200);
-    text("The current amount of cases of COVID-19: " +stateData.getString("cases"), 100, 300);
+    text("Date: " + stateData.getString("date"), (width - 260), 50);
+    text("Fips number : " + stateData.getString("fips"), 100, 200);
+    text("The current number of COVID-19 cases: " +stateData.getString("cases"), 100, 300);
     text("The current amount of deaths due to COVID-19: " + stateData.getString("deaths"), 100, 400);
     //newUsMap.drawSelectedChild();
   } else{
@@ -38,11 +38,11 @@ void draw(){
     TableRow latestUsData = usData.getLastStringData(); 
     fill(0);
     textSize(22);
-    text("Current amounts of death caused of COVID-19 in all of the US: " + latestUsData.getString("deaths") + " people.", 100, (height - 100));
-    text("Current cases of COVID-19 in all of the US: " + latestUsData.getString("cases") + " people.", 100, (height - 50));
+    text("Current numbers of death due to COVID-19 in the United States: " + latestUsData.getString("deaths") + " people.", 100, (height - 100));
+    text("Current cases of COVID-19 in the United States: " + latestUsData.getString("cases") + " people.", 100, (height - 50));
     textSize(16);
     text("Click on one of the states to find", (width - 430), (height/2));
-    text("information about the current COVID-19 situations", (width - 430), ((height/2) + 25));
+    text("information about the current COVID-19 situation", (width - 430), ((height/2) + 25));
     text("in that area.", (width - 430), ((height/2) + 50));
   }
 }

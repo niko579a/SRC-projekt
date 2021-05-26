@@ -63,13 +63,4 @@ class Map{
       return new MapChild();
     }
   }
-  
-  /*void drawSelectedChild(){
-    try{
-      MapChild child = allMapChildren.get(selectedChild);
-      child.diaplay();
-    } catch(ArrayIndexOutOfBoundsException error){
-    }
-  }
-  */
 }
