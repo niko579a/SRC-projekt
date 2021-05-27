@@ -11,7 +11,6 @@ void setup(){
   usData = new LoadData("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv");
   usMap = loadShape("us.svg");
   smooth(8);
-  pixelDensity(2);
   usMap.scale(0.85);
   newUsMap = new Map("us.svg",  0.85 , 124, 165, 196);
   backButton = new Button(100, 50, 150, 40, "Back", color(0, 32, 96), color(109, 177, 236), 20); 
