@@ -1,4 +1,5 @@
 class Button{
+//Data for klassen:
   float x;
   float y;
   float w;
@@ -8,6 +9,7 @@ class Button{
   color textButtonColor;
   float buttonTextSize;
   
+//Klassens konstruktør:
   Button(float x_, float y_, float w_, float h_, String buttonText_, color buttonColor_, color textButtonColor_, float buttonTextSize_){
     x = x_;
     y = y_;
@@ -18,7 +20,9 @@ class Button{
     textButtonColor = textButtonColor_;
     buttonTextSize = buttonTextSize_;
   }
-  
+
+//Klassen metoder:
+//Denne metode tegner knappen
   void display(){
     rectMode(CENTER);
     textAlign(CENTER);
@@ -31,6 +35,7 @@ class Button{
     textAlign(LEFT);
   }
   
+//Denne metode tjekker om mussen er inde for knappens område, og hvis den er det så returner den enten true eller false
   boolean isClicked(){
     if(mouseX >= (x - (w/2)) && mouseX <= (x + (w/2)) && mouseY >= (y - (h/2)) && mouseY <= (y + (h/2))){
       return true;

@@ -1,10 +1,10 @@
 class MapChild{
-  //Data for klassen
+//Data for klassen
   PShape child;
   int id;
   String name = "";
   
-  //konstruktør
+//konstruktør
   MapChild(PShape child_, int id_){
     child = child_;
     id = id_;
@@ -14,10 +14,4 @@ class MapChild{
   MapChild(){
     name = "error";
   }
-  
-  void diaplay(){
-    child.disableStyle();
-    shape(child, 50 , 50);
-    println(id + 1);
-  }
-} 
+}
